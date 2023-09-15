@@ -1,0 +1,5 @@
+Explaination ::
+	In this task, record which has Pnumber 22 can not delete because it's violate referential integrity constraint. 
+
+DELETE FROM project WHERE Pnumber=22;
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`kxs2000`.`works_on`, CONSTRAINT `fk7` FOREIGN KEY (`Pno`) REFERENCES `project` (`Pnumber`))

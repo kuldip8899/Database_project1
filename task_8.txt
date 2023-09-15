@@ -1,0 +1,11 @@
+Explaination::
+	In this task, records are inserted successfully.
+
+mysql> INSERT INTO employee VALUES ('KD','R','PATEL','123996531','10-MAR-1954','404 e border,Arlington,TX','M','90000','666666606','7');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO dept_locations VALUES (7,'Banglore');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO works_on VALUES ('001614905','70','15');
+Query OK, 1 row affected (0.00 sec)

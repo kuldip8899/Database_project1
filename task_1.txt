@@ -1,0 +1,117 @@
+mysql> use kxs2000
+Database changed
+
+mysql> create table if not exists employee(Fname VARCHAR(100) NOT NULL,Minit VARCHAR(100) NOT NULL,Lname VARCHAR(100) NOT NULL,Ssn INT NOT NULL,Bdate  INT NOT NULL ,Address VARCHAR(100) NOT NULL,Sex VARCHAR(100) NOT NULL,Salary INT NOT NULL,Super_ssn INT NOT NULL);
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql> desc employee;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Fname     | varchar(25) | YES  |     | NULL    |       |
+| Minit     | varchar(25) | YES  |     | NULL    |       |
+| Lname     | varchar(25) | YES  |     | NULL    |       |
+| Ssn       | varchar(20) | NO   | PRI | NULL    |       |
+| Bdate     | varchar(25)        | YES  |     | NULL    |       |
+| Address   | varchar(70) | YES  |     | NULL    |       |
+| Sex       | varchar(20) | YES  |     | NULL    |       |
+| Salary    | varchar(25) | YES  |     | NULL    |       |
+| Super_ssn | varchar(20) | YES  |     | NULL    |       |
+| Dno       | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+
+
+mysql> CREATE TABLE if not exists department( Dname VARCHAR(25),  Dnumber VARCHAR(25),  Mgr_ssn VARCHAR(20),  Mgr_start_date DATE,  Total_Salary VARCHAR(15),  PRIMARY KEY(Dnumber) );
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql> desc department;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| Dname          | varchar(25) | YES  |     | NULL    |       |
+| Dnumber        | varchar(25) | NO   | PRI | NULL    |       |
+| Mgr_ssn        | varchar(20) | YES  |     | NULL    |       |
+| Mgr_start_date | varchar(25)        | YES  |     | NULL    |       |
+| Total_Salary   | varchar(15) | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+
+mysql> CREATE TABLE if not exists dept_locations( Dnumber VARCHAR(25), Dlocation VARCHAR(25),  PRIMARY KEY(Dnumber,Dlocation) );
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql> desc dept_locations;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| Dnumber   | varchar(25) | NO   | PRI | NULL    |       |
+| Dlocation | varchar(25) | NO   | PRI | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+
+
+mysql> CREATE TABLE if not exists project( Pname VARCHAR(25),  Pnumber VARCHAR(25),  Ploacation VARCHAR(25),  Dnum VARCHAR(25),  Total_Hours VARCHAR(20),  PRIMARY KEY(Pnumber) );
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql> desc project;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| Pname       | varchar(25) | YES  |     | NULL    |       |
+| Pnumber     | varchar(25) | NO   | PRI | NULL    |       |
+| Ploacation  | varchar(25) | YES  |     | NULL    |       |
+| Dnum        | varchar(25) | YES  |     | NULL    |       |
+| Total_Hours | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+
+mysql> CREATE TABLE if not exists works_on( Essn VARCHAR(20),  Pno VARCHAR(20),  Hours VARCHAR(15),  PRIMARY KEY(Essn,Pno) );
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> desc works_on;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| Essn  | varchar(20) | NO   | PRI | NULL    |       |
+| Pno   | varchar(20) | NO   | PRI | NULL    |       |
+| Hours | varchar(15) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+
+mysql> CREATE TABLE if not exists dependent( Essn VARCHAR(20),  Dependent_name VARCHAR(20),  Sex VARCHAR(20),  Bdate DATE,  Relationship VARCHAR(25),  PRIMARY KEY(Essn,Dependent_name) );
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> desc dependent;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| Essn           | varchar(20) | NO   | PRI | NULL    |       |
+| Dependent_name | varchar(20) | NO   | PRI | NULL    |       |
+| Sex            | varchar(20) | YES  |     | NULL    |       |
+| Bdate          | varchar(25)        | YES  |     | NULL    |       |
+| Relationship   | varchar(25) | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+
+mysql> show tables;
++-------------------+
+| Tables_in_kxs2000 |
++-------------------+
+| department        |
+| dependent         |
+| dept_locations    |
+| employee          |
+| project           |
+| works_on          |
++-------------------+
+6 rows in set (0.00 sec)

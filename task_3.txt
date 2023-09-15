@@ -1,0 +1,74 @@
+1)
+
+mysql>  SELECT project.Pname,project.Pnumber,SUM(Hours) AS TOTAL_Hours FROM (project INNER JOIN works_on ON project.Pnumber=works_on.Pno) GROUP BY project.Pname,project.Pnumber;
++------------------+---------+-------------+
+| Pname            | Pnumber | TOTAL_Hours |
++------------------+---------+-------------+
+| Computerization  | 10      |         119 |
+| ConfigMgmt       | 11      |          65 |
+| DataMining       | 13      |          18 |
+| Reorganization   | 20      |          34 |
+| SearchEngine     | 22      |          34 |
+| MotherBoard      | 29      |          40 |
+| Benefits         | 30      |          59 |
+| EntityAnnot      | 4       |          61 |
+| Analysis         | 5       |        88.5 |
+| EventManagement  | 6       |        44.5 |
+| OperatingSystem  | 61      |         358 |
+| DatabaseSystems  | 62      |         347 |
+| Middleware       | 63      |         250 |
+| FoodDistribution | 7       |          74 |
+| Advertizing      | 70      |          72 |
+| InkjetPrinters   | 91      |         332 |
+| LaserPrinters    | 92      |         158 |
+| HumanResource    | 95      |         101 |
++------------------+---------+-------------+
+18 rows in set (0.00 sec)
+
+2)
+
+mysql> INSERT INTO department (Dname, Dnumber, Mgr_ssn, Mgr_start_date) VALUES ('Services', '1', '123456789', '11-AUG-2012');
+ERROR 1062 (23000): Duplicate entry '1' for key 'department.PRIMARY'
+
+3)
+
+mysql> INSERT INTO department (Dname, Dnumber, Mgr_ssn, Mgr_start_date) VALUES ('Purchasing', '3', '990110110', '02-FEB-2013');
+ERROR 1062 (23000): Duplicate entry '3' for key 'department.PRIMARY'
+
+4)
+
+mysql> INSERT INTO department (Dname, Dnumber, Mgr_ssn, Mgr_start_date) VALUES ('Customers', '12', '333445555', '14-JAN-2013');
+Query OK, 1 row affected (0.00 sec)
+
+5)
+
+mysql> UPDATE dept_locations SET Dlocation='Seattle' WHERE Dnumber=9;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+6)
+
+mysql> UPDATE employee SET Salary=55000 WHERE Ssn=444444444;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+7)
+
+mysql> INSERT INTO employee VALUES('Jane','B','Smith','666666606','01-MAR-1980','3556 W SecondStreet,Miami,FL','F',85000,'666666603',5);
+ERROR 1062 (23000): Duplicate entry '666666606' for key 'employee.PRIMARY'
+
+8)
+
+mysql> UPDATE works_on SET Hours=25 WHERE Pno=1 AND Essn='666884444';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+9)
+    mysql>  DELETE FROM employee WHERE Ssn='432765098';
+    ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`kxs2000`.`works_on`, CONSTRAINT `fk6` FOREIGN KEY (`Essn`) REFERENCES `employee` (`Ssn`))
+
+   mysql> DELETE FROM department WHERE Dnumber=9;
+   ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`kxs2000`.`employee`, CONSTRAINT `fk2` FOREIGN KEY (`Dno`) REFERENCES `department` (`Dnumber`))
+
+   mysql> DELETE FROM dependent WHERE Essn='666666608';
+   Query OK, 3 rows affected (0.01 sec)

@@ -1,0 +1,31 @@
+mysql> ALTER TABLE employee ADD CONSTRAINT fk1 FOREIGN KEY (Super_ssn) REFERENCES employee(Ssn);
+Query OK, 71 rows affected (0.06 sec)
+Records: 71  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE employee ADD CONSTRAINT fk2 FOREIGN KEY (Dno) REFERENCES department(Dnumber);
+Query OK, 71 rows affected (0.09 sec)
+Records: 71  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE department ADD CONSTRAINT fk3 FOREIGN KEY (Mgr_ssn) REFERENCES employee(Ssn);
+Query OK, 9 rows affected (0.07 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE dept_locations ADD CONSTRAINT fk4 FOREIGN KEY (Dnumber) REFERENCES department(Dnumber);
+Query OK, 15 rows affected (0.05 sec)
+Records: 15  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE project ADD CONSTRAINT fk5 FOREIGN KEY (Dnum) REFERENCES department(Dnumber);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE works_on ADD CONSTRAINT fk6 FOREIGN KEY (Essn) REFERENCES employee(Ssn);
+Query OK, 97 rows affected (0.08 sec)
+Records: 97  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE works_on ADD CONSTRAINT fk7 FOREIGN KEY (Pno) REFERENCES project(Pnumber);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE dependent ADD CONSTRAINT fk8 FOREIGN KEY (Essn) REFERENCES employee(Ssn);
+Query OK, 22 rows affected (0.49 sec)
+Records: 22  Duplicates: 0  Warnings: 0

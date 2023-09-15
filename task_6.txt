@@ -1,0 +1,23 @@
+1)
+Primary key (Dnumber) is null.
+So it violate entity integrity constraint.
+
+mysql> INSERT INTO department VALUES ('Kuldip',NULL,'1234563211','10-JAN-2010','75000');
+ERROR 1048 (23000): Column 'Dnumber' cannot be null
+
+2)
+This query violates the key constraint
+
+mysql> INSERT INTO employee VALUES ('KD','R','Patel','987987987','10-MAR-1999','404 e border,Arlington,TX','M','80000','123654780','3');
+ERROR 1062 (23000): Duplicate entry '987987987' for key 'employee.PRIMARY'
+
+
+3)
+This query violates referential integrity constraint.
+
+mysql> INSERT INTO employee VALUES ('KD','R','PATEL','123996531','11-JAN-1990','404 e border,Arlington,TX','M','90000','9461122345','3');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`kxs2000`.`employee`, CONSTRAINT `fk1` FOREIGN KEY (`Super_ssn`) REFERENCES `employee` (`Ssn`))
+
+
+
+

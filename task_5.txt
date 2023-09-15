@@ -1,0 +1,23 @@
+1) TRIGGER ON INSERT
+
+CREATE TRIGGER update_sal 
+BEFORE INSERT on department
+for each  row
+set Total_Salary = 
+( SELECT sum(salary) FROM employee, department WHERE employee.Dno=department.Dnumber);
+
+2) TRIGGER ON UPDATE
+
+CREATE TRIGGER update_sal 
+BEFORE UPDATE on department
+for each  row
+set Total_Salary = 
+( SELECT sum(salary) FROM employee, department WHERE employee.Dno=department.Dnumber);
+
+3) TRIGGER ON DELETE
+
+CREATE TRIGGER update_sal 
+AFTER DELETE on department
+for each  row
+set Total_Salary = 
+( SELECT sum(salary) FROM employee, department WHERE employee.Dno=department.Dnumber);
